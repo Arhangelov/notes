@@ -2,7 +2,7 @@ const express = require('express');
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const router = require("./routes");
-const PORT = 3000;
+const PORT = 5000;
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({  extended: true }));
 app.use(router);
 
-app.listen(3000, (err) =>{
+app.listen(5000, (err) =>{
     if(err) console.log("Error in server setup")
     console.log("Server listening on Port", PORT);
 })
