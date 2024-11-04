@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { getAllNotes, getNote, createNote, deleteNote, updateNote } = require("../services/homeService");
 
 
 router.get("/", (req, res) => {
