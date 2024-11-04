@@ -1,0 +1,13 @@
+.home-container {
+    margin: 0 auto;
+}
+
+.home-container > form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.addBtn {
+    padding: .3rem 1rem;
+}
