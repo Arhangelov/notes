@@ -3,63 +3,24 @@ const { getAllNotes, getNote, createNote, deleteNote, updateNote } = require("..
 
 
 router.get("/", (req, res) => {
-    getAllNotes()
-    .then(allNotes => {
-        res.json(allNotes);
-    }).catch(err => {
-        return res.status(400).send({
-            message: `${err.message}`,
-            type: "ERROR"
-        });
-    })
+    res.json(getAllNotes())
 });
 
 router.get("/:idNotes", (req, res) => {
-    getNote(req.params.idNotes)
-    .then(note => {
-        res.json(note);
-    }).catch(err => {
-        return res.status(400).send({
-            message: `${err.message}`,
-            type: "ERROR"
-        });
-    })
+    res.json(getNote(req.params.id))
 });
 
-router.post("/create", (req, res) => {
-    createNote(req.body)
-    .then(notes => {
-        res.json(notes);
-    }).catch(err => {
-        return res.status(400).send({
-            message: `${err.message}`,
-            type: "ERROR"
-        });
-    })
+router.post("/", (req, res) => {
+    res.json(createNote(req.body))
+
 });
 
 router.get("/delete-note/:idDeletedNote", (req, res) => {
-    deleteNote(req.params.idDeletedNote)
-    .then(notes => {
-        res.json(notes);
-    }).catch(err => {
-        return res.status(400).send({
-            message: `${err.message}`,
-            type: "ERROR"
-        });
-    })
+    res.json(deleteNote(req.params.idDeletedNote));
 });
 
 router.patch("/update-note", (req, res) => {
-    updateNote(req.body)
-    .then(note => {
-        res.json(note);
-    }).catch(error => {
-        return res.status(400).send({
-            message: `${err.message}`,
-            type: "ERROR"
-        });
-    })
+    res.json(updateNote(req.body));
 });
 
 module.exports = router;
