@@ -33,3 +33,7 @@ p, button, textarea, input {
     color: var(--text-color);
     font-family: var(--paragraph-font);
 }
+
+button, input[type = submit] {
+    cursor: pointer;
+}
