@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { getAllNotes, getNote, createNote, deleteNote, updateNote } = require("../services/homeService");
+const { getAllNotes, getNote, createNote, deleteNote, updatedNote } = require("../services/homeService");
 
 
 router.get("/", (req, res) => {
@@ -15,12 +15,12 @@ router.post("/", (req, res) => {
 
 });
 
-router.get("/delete-note/:idDeletedNote", (req, res) => {
-    res.json(deleteNote(req.params.idDeletedNote));
+router.get("/delete-note/:noteId", (req, res) => {
+    res.json(deleteNote(req.params.noteId));
 });
 
-router.patch("/update-note", (req, res) => {
-    res.json(updateNote(req.body));
+router.post("/update-note", (req, res) => {
+    res.json(updatedNote(req.body));
 });
 
 module.exports = router;
