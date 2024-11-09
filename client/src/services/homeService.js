@@ -21,3 +21,11 @@ export const deleteNoteService = async (noteId) => {
         headers: {"Content-Type": "application/json"},
     }).then(res => res.json());
 };
+
+export const updateNoteService = async (noteId, newText) => {
+    return fetch(url + '/update-note', {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({noteId, newText})
+    }).then(res => res.json());
+};
