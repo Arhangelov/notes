@@ -1,14 +1,14 @@
-const notes = require("../db/notes");
+let notes = require("../db/notes");
 
 const getAllNotes = () => {
     return notes;
 };
 
 const createNote = (newNote) => {  
-    const alreadyCreated = notes.find(note => note.message === newNote.message);
+    const alreadyCreated = notes.find(note => note.id === newNote.id);
 
     if( alreadyCreated ) {
-        throw new Error("Note with the same text already exists.")
+        throw new Error("Note with the same id already exists.")
     } else {
         notes.push(newNote);
     }
@@ -16,14 +16,21 @@ const createNote = (newNote) => {
     return notes
 };
 
-const updatedNote = ({idNote, newText}) => {
-    const updatedNote = notes.find(note => note.id == idNote);
+const updatedNote = ({noteId, newText}) => {
+    
+    const newMessage = { message: newText }
+    const updatedNote = notes.find(note => note.id == noteId);
+    const index = notes.indexOf(updatedNote);
 
-    return updatedNote.message = newText;
+    Object.assign(updatedNote, newMessage);
+
+    notes[index] = updatedNote;
+    return notes;
 };
 
 const deleteNote = (idNote) => {
-    return notes.filter(note => note.id != idNote);
+    notes = notes.filter(note => note.id != idNote);
+    return notes
 };
 
 const getNote = (idNote) => {
