@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
 import "./Home.css";
 //Service
 import { createNoteService } from '../../services/homeService';
@@ -8,7 +9,7 @@ import { useNotes } from '../../store/NotesContext';
 import NoteCard from '../NoteCard/NoteCard';
 
 const Home = () => {
-    const [notes, setNotes] = useNotes();
+    const {notes, setNotes, isEditing, setIsEditing} = useNotes();
     const [newNote, setNewNote] = useState({
         id: null,
         message: ""
@@ -16,11 +17,12 @@ const Home = () => {
 
     const onChangeHandler = (e) => {
         setNewNote({
-            id: Math.floor(Math.random() * 100),
+            id: nanoid(),
             message: e.target.value
         })
     }
 
+    //Handler for creating new Note
     const createNote = async(e) => {
         e.preventDefault();
 
@@ -48,7 +50,7 @@ const Home = () => {
                     rows="6"
                     placeholder='Write a note...'
                 />
-                <input type="submit" value="Add Note" className='addBtn' />
+                <input type="submit" value= "Add Note" className='addBtn' />
             </form>
             <NoteCard />
         </div>
