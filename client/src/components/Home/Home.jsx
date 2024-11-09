@@ -9,7 +9,7 @@ import { useNotes } from '../../store/NotesContext';
 import NoteCard from '../NoteCard/NoteCard';
 
 const Home = () => {
-    const {notes, setNotes, isEditing, setIsEditing} = useNotes();
+    const {setNotes} = useNotes();
     const [newNote, setNewNote] = useState({
         id: null,
         message: ""

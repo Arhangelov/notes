@@ -31,7 +31,7 @@ const NoteCard = () => {
         setIsEditing(true);
         setEditNoteId(noteId);
         setEditNoteText(noteText);
-    },[]);
+    },[setIsEditing]);
 
     const deleteNoteHandle = useCallback((noteId) => {
         deleteNoteService(noteId)
